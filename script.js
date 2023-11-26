@@ -4,9 +4,9 @@ var kperc1 = 5; // kezdő perc
 var vperc1 = 52;  // vége perc
 
 // Második megjelenítési idő
-var ora2 = 21;
+var ora2 = 16;
 var kperc2 = 0; // kezdő perc
-var vperc2 = 22; // vége perc
+var vperc2 = 59; // vége perc
 
 //Set time
 function currentTime() {
@@ -16,7 +16,7 @@ function currentTime() {
     let mm = date.getMinutes();
     let ss = date.getSeconds();
     
-    console.log(hh + "  " + mm + "  " + ss);
+    //console.log(hh + "  " + mm + "  " + ss);
     showTheTime(hh, mm, ss);
 
     setTimeout(currentTime, 1000);
@@ -115,7 +115,7 @@ function showWeather() {
         document.getElementById('temp2').innerHTML = tempValue + " Celsius-fok";
         document.getElementById('desc2').innerHTML = descValue.toUpperCase();
     });
-    console.log("Időjárás lekérés!");
+    //console.log("Időjárás lekérés!");
     setTimeout(showWeather, 600 * 1000);
 }
 
