@@ -1,12 +1,12 @@
 // Első megjelenítési idő
-var ora1 = 19;
-var kperc1 = 55; // kezdő perc
-var vperc1 = 56;  // vége perc
+var ora1 = 8;
+var kperc1 = 5; // kezdő perc
+var vperc1 = 52;  // vége perc
 
 // Második megjelenítési idő
-var ora2 = 19;
-var kperc2 = 52; // kezdő perc
-var vperc2 = 53; // vége perc
+var ora2 = 21;
+var kperc2 = 0; // kezdő perc
+var vperc2 = 22; // vége perc
 
 //Set time
 function currentTime() {
@@ -16,8 +16,10 @@ function currentTime() {
     let mm = date.getMinutes();
     let ss = date.getSeconds();
     
+    console.log(hh + "  " + mm + "  " + ss);
     showTheTime(hh, mm, ss);
-    var t = setTimeout(function(){ currentTime() }, 1000);
+
+    setTimeout(currentTime, 1000);
 }
 
 // Show the time
@@ -37,6 +39,7 @@ function operationTime(hh, mm) {
     if (hh == ora1 && mm > kperc1-1 && mm < vperc1 || hh == ora2 && mm > kperc2-1 && mm < vperc2) {
         return true;
     }
+    else return false;
 }
 
 //Carousel
@@ -71,10 +74,11 @@ function carousel() {
 
 function showOnlyTime() {
     
-    let e = document.getElementsByClassName("onlyTime");
-    for (var i = 0; i < e.length; i++) {
-        e[i].style.display = "block"; 
-    }
+    let e = document.getElementById("onlyTime")//  getElementsByClassName("onlyTime");
+    /*for (var i = 0; i < e.length; i++) {
+        e[i].style.display = "none"; 
+    }*/
+    e.style.display = "none";
     // Lekérjük az időt
     const d = new Date();
     var hh = d.getHours();
@@ -83,22 +87,43 @@ function showOnlyTime() {
     // Működés meghatározás
     let op = true;
     op = operationTime(hh, mm);
+    console.log(op);
 
     // Ha op = false, az idő jelenik meg
-    if (op) {
-        for (var j = 0; j < e.length; j++) {
-            e[j].style.display = "none"; 
-        }
+    if (!op) {
+        /*for (var j = 0; j < e.length; j++) {
+            e[j].style.display = "block"; 
+        }*/
+        e.style.display = "block";
     }
 
     setTimeout(showOnlyTime, 4000);
 }
 
+function showWeather() {
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=Abony&units=metric&lang=hu&appid=1b9398d38b13dfefd81a6195c9d4a284')
+    .then(response => response.json())
+    .then(data => {
+        var nameValue = data['name'];
+        var tempValue = data['main']['temp'];
+        var descValue = data['weather'][0]['description'];
+        
+        document.getElementById('name1').innerHTML = nameValue;
+        document.getElementById('temp1').innerHTML = tempValue + " Celsius-fok";
+        document.getElementById('desc1').innerHTML = descValue.toUpperCase();
+        document.getElementById('name2').innerHTML = nameValue;
+        document.getElementById('temp2').innerHTML = tempValue + " Celsius-fok";
+        document.getElementById('desc2').innerHTML = descValue.toUpperCase();
+    });
+    console.log("Időjárás lekérés!");
+    setTimeout(showWeather, 600 * 1000);
+}
 
-function Main(){
-    
+function Main() {
     currentTime();
     carousel();
     showOnlyTime();
+    showWeather();
 }
+
 Main();

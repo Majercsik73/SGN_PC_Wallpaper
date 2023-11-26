@@ -11,7 +11,7 @@ img {
     padding-top: 6px;
 }
 
-.onlyTime {
+#onlyTime {
     position: absolute;
     /*background-color: coral;*/
     top: 0;
@@ -22,7 +22,15 @@ img {
     50% {top: 350px;}
   }
 
+.display1, .display2 {
+    text-align: center;
+    margin: 20px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: yellow;
+}
 
+
+/* Képernyő méretektől függő megjelenés
   /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     body {
@@ -37,6 +45,12 @@ img {
     #clock3 {
         font-size: 120px;
     }
+    h1 {
+        font-size: 100px;
+    }
+    p {
+        font-size: 60px;
+    }
 }
   
   /* Small devices (portrait tablets and large phones, 600px and up)*/ 
@@ -50,6 +64,12 @@ img {
     #clock3 {
         font-size: 160px;
     }
+    h1 {
+        font-size: 140px;
+    }
+    p {
+        font-size: 60px;
+    }
 }
   
   /* Medium devices (landscape tablets, 768px and up) */
@@ -59,6 +79,12 @@ img {
     }
     #clock3 {
         font-size: 200px;
+    }
+    h1 {
+        font-size: 160px;
+    }
+    p {
+        font-size: 60px;
     }
 } 
   
@@ -70,6 +96,12 @@ img {
     #clock3 {
         font-size: 260px;
     }
+    h1 {
+        font-size: 180px;
+    }
+    p {
+        font-size: 80px;
+    }
 } 
   
   /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -79,6 +111,15 @@ img {
     }
     #clock3 {
         font-size: 340px;
+    }
+    h1 {
+        font-size: 220px;
+    }
+    p {
+        font-size: 100px;
+    }
+    #desc1, #desc2 {
+        font-size: 80px;
     }
 }
 
