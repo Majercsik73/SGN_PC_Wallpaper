@@ -4,7 +4,7 @@ var kperc1 = 5; // kezdő perc
 var vperc1 = 52;  // vége perc
 
 // Második megjelenítési idő
-var ora2 = 16;
+var ora2 = 18;
 var kperc2 = 0; // kezdő perc
 var vperc2 = 59; // vége perc
 
@@ -34,7 +34,7 @@ function showTheTime(hh, mm, ss) {
     document.getElementById("clock3").innerText = time;
 }
 
-// Clock and wallpaper operating timer
+// Clock or wallpaper operating timer
 function operationTime(hh, mm) {
     if (hh == ora1 && mm > kperc1-1 && mm < vperc1 || hh == ora2 && mm > kperc2-1 && mm < vperc2) {
         return true;
@@ -56,8 +56,8 @@ function carousel() {
     var mm = d.getMinutes();
 
     // Működés meghatározás
-    let op = false;
-    op = operationTime(hh, mm);
+    let op = true  ; //false ;
+    //op = operationTime(hh, mm);
     
     // Ha op = true, a képnézegető megjelenik
     if (op) {
@@ -100,6 +100,7 @@ function showOnlyTime() {
     setTimeout(showOnlyTime, 4000);
 }
 
+// Időjárás lekérés
 function showWeather() {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Abony&units=metric&lang=hu&appid=1b9398d38b13dfefd81a6195c9d4a284')
     .then(response => response.json())

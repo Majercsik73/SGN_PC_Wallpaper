@@ -12,6 +12,7 @@ img {
 }
 
 #onlyTime {
+    /*display: block;*/
     position: absolute;
     /*background-color: coral;*/
     top: 0;
@@ -19,7 +20,7 @@ img {
   }
   
 @keyframes mymove {
-    50% {top: 350px;}
+    50% {top: 220px;}
   }
 
 .display1, .display2 {
